@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>México - Uma Jornada Multidisciplinar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #CE1126;
+            --green: #006847;
+            --white: #FFFFFF;
+            --yellow: #F7B718;
+            --blue: #1E5F8B;
+            --orange: #E35205;
+            --dark: #2D2926;
+            --light: #F8F8F8;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .mexican-flag-bar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--green) 33%, var(--white) 33%, var(--white) 66%, var(--red) 66%);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Mobile First */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 6px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--red);
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section Mobile */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.3rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+        
+        /* Seções Mobile */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--white), var(--red));
+        }
+        
+        /* Sobre o México Mobile */
+        .about-mexico {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--red);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Áreas de Conhecimento Mobile */
+        .knowledge-areas {
+            background-color: var(--light);
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .area-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+        
+        .area-icon {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .area-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        
+        .area-card p {
+            font-size: 0.9rem;
+        }
+        
+        /* Cultura e Tradições Mobile */
+        .culture {
+            background-color: white;
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .culture-card {
+            position: relative;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .culture-overlay {
+            padding: 15px;
+        }
+        
+        .culture-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        /* Dados Interessantes Mobile */
+        .facts {
+            background-color: var(--light);
+        }
+        
+        .facts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .fact-card {
+            padding: 20px 15px;
+            border-radius: 8px;
+        }
+        
+        .fact-number {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .fact-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .fact-card p {
+            font-size: 0.8rem;
+        }
+        
+        /* Footer Mobile */
+        footer {
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-description {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            font-size: 0.8rem;
+        }
+        
+        /* Elementos Decorativos Mobile - Reduzidos */
+        .aztec-decoration {
+            width: 100px;
+            height: 100px;
+        }
+        
+        /* Menu Mobile */
+        .menu-toggle {
+            display: flex;
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 80%;
+            height: calc(100vh - 70px);
+            background-color: white;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 30px;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+        
+        .nav-links.active {
+            left: 0;
+        }
+        
+        .nav-links li {
+            margin: 15px 0;
+        }
+        
+        .nav-links a {
+            font-size: 1.1rem;
+        }
+        
+        /* Media Queries para Tablets */
+        @media (min-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .facts-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .areas-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .culture-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* Media Queries para Desktop */
+        @media (min-width: 992px) {
+            .mexican-flag-bar {
+                height: 8px;
+            }
+            
+            header {
+                padding: 20px 0;
+                top: 8px;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-links {
+                position: static;
+                width: auto;
+                height: auto;
+                flex-direction: row;
+                background-color: transparent;
+                padding-top: 0;
+                box-shadow: none;
+            }
+            
+            .nav-links li {
+                margin: 0 0 0 25px;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+                background-attachment: fixed;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: row;
+                gap: 50px;
+            }
+            
+            .about-image {
+                order: 1;
+                margin-bottom: 0;
+            }
+            
+            .about-text {
+                order: 2;
+            }
+            
+            .areas-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+            }
+            
+            .culture-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+            
+            .facts-grid {
+                gap: 25px;
+            }
+            
+            .fact-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mexican-flag-bar"></div>
+    
+    <!-- Elementos decorativos -->
+    <div class="aztec-decoration decoration-1"></div>
+    <div class="aztec-decoration decoration-2"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-sun"></i>
+                    <span>México</span>
+                </div>
+                
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#conhecimento">Conhecimento</a></li>
+                    <li><a href="#cultura">Cultura</a></li>
+                    <li><a href="#dados">Dados</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>México: Uma Jornada Multidisciplinar</h1>
+                <p>Descubra a riqueza cultural, histórica e científica deste país fascinante através de diferentes áreas do conhecimento.</p>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sobre o México -->
+    <section class="section about-mexico" id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre o México</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=2070&auto=format&fit=crop" alt="Vista do México">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Um País de Contrastes e Belezas</h3>
+                    <p>O México, oficialmente Estados Unidos Mexicanos, é um país localizado na América do Norte, limitado ao norte pelos Estados Unidos, ao sul e oeste pelo Oceano Pacífico, a sudeste pela Guatemala, Belize e Mar do Caribe, e a leste pelo Golfo do México.</p>
+                    <p>Com uma área de aproximadamente 1.972.550 km², é o 13º maior país do mundo em área territorial e o 10º mais populoso, com cerca de 126 milhões de habitantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Conhecimento -->
+    <section class="section knowledge-areas" id="conhecimento">
+        <div class="container">
+            <div class="section-title">
+                <h2>O México Através das Áreas de Conhecimento</h2>
+            </div>
+            
+            <div class="areas-grid">
+                <div class="area-card exatas">
+                    <div class="area-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Ciências Exatas</h3>
+                    <p>Conheça as contribuições mexicanas para a física, química e engenharia, incluindo os avanços tecnológicos das civilizações pré-colombianas.</p>
+                </div>
+                
+                <div class="area-card natureza">
+                    <div class="area-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Ciências da Natureza</h3>
+                    <p>Explore a incrível biodiversidade mexicana, desde as borboletas monarca até os ecossistemas únicos como os desertos e florestas tropicais.</p>
+                </div>
+                
+                <div class="area-card humanas">
+                    <div class="area-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>Ciências Humanas</h3>
+                    <p>Descubra a rica história do México, desde as civilizações asteca e maia até a Revolução Mexicana e a cultura contemporânea.</p>
+                </div>
+                
+                <div class="area-card linguagens">
+                    <div class="area-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Linguagens</h3>
+                    <p>Aprecie a literatura mexicana, desde os códices antigos até os escritores modernos como Octavio Paz e Carlos Fuentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultura e Tradições -->
+    <section class="section culture" id="cultura">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cultura e Tradições</h2>
+            </div>
+            
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?q=80&w=2070&auto=format&fit=crop" alt="Arte Mexicana">
+                    </div>
+                    <div class="culture-overlay">
+                        <h3>Arte e Artesanato</h3>
+                        <p>Do vibrante folclore aos murais de Diego Rivera</p>
+                    </div>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop" alt="Culinária Mexicana">
+                    </div>
+                    <div class="culture-overlay">
+                        <h3>Culinária</h3>
+                        <p>Patrimônio Cultural Imaterial da Humanidade</p>
+                    </div>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://images.unsplash.com/photo-1518632611755-5d5c7615b69d?q=80&w=2070&auto=format&fit=crop" alt="Arquitetura Mexicana">
+                    </div>
+                    <div class="culture-overlay">
+                        <h3>Arquitetura</h3>
+                        <p>Das pirâmides à arquitetura contemporânea</p>
+                    </div>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-image">
+                        <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=2070&auto=format&fit=crop" alt="Festivais Mexicanos">
+                    </div>
+                    <div class="culture-overlay">
+                        <h3>Festivais</h3>
+                        <p>Dia dos Mortos e outras celebrações únicas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dados Interessantes -->
+    <section class="section facts" id="dados">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dados Interessantes</h2>
+            </div>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-number">68</div>
+                    <h3>Línguas Indígenas</h3>
+                    <p>O México reconhece 68 línguas indígenas além do espanhol</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-number">35</div>
+                    <h3>Patrimônios da UNESCO</h3>
+                    <p>Sítios culturais e naturais reconhecidos mundialmente</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-number">10%</div>
+                    <h3>Biodiversidade Mundial</h3>
+                    <p>O México abriga 10% da biodiversidade do planeta</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-number">3000</div>
+                    <h3>Anos de História</h3>
+                    <p>Civilizações no território mexicano desde 1500 a.C.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-sun"></i>
+                    <span>México</span>
+                </div>
+                <p class="footer-description">Um país de cores vibrantes, história rica e cultura fascinante</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-wikipedia-w"></i></a>
+                    <a href="#"><i class="fas fa-globe-americas"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; infor 2k25 México Multidisciplinar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typingEffect = setInterval(() => {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typingEffect);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
